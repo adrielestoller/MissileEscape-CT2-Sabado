@@ -9,19 +9,18 @@ public class MissileBehaviour : MonoBehaviour
     TrailRenderer trail;
 
     [SerializeField]
-    float velocidade, rotacao, tempo;
-
+    float velocidade,rotacao, tempo;
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        rb = GetComponent<Rigidbody2D>();
+     player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+     rb = GetComponent<Rigidbody2D>();
 
-        trail = GetComponentInChildren<TrailRenderer>();
+     trail = GetComponentInChildren<TrailRenderer>();
     }
 
     void FixedUpdate()
     {
-        if (tempo > 0)
+        if(tempo > 0)
         {
             if (player != null)
             {
@@ -29,14 +28,10 @@ public class MissileBehaviour : MonoBehaviour
                 direcao.Normalize();
 
                 float angulo = Vector3.Cross(direcao, transform.up).z;
-                
+
                 rb.angularVelocity = -angulo * rotacao;
                 rb.velocity = transform.up * velocidade;
             }
-        }
-        else
-        {
-            // Destruir o míssil
         }
     }
 }

@@ -7,19 +7,18 @@ public class MissileBehaviour : MonoBehaviour
     Transform player;
     Rigidbody2D rb;
     TrailRenderer trail;
-
     [SerializeField]
     float velocidade, rotacao, tempo;
-
+    // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
-
         trail = GetComponentInChildren<TrailRenderer>();
     }
 
-    void FixedUpdate()
+    // Update is called once per frame
+    void Update()
     {
         if (tempo > 0)
         {
@@ -28,15 +27,11 @@ public class MissileBehaviour : MonoBehaviour
                 Vector2 direcao = (Vector2)player.position - rb.position;
                 direcao.Normalize();
 
-                float angulo = Vector3.Cross(direcao, transform.up).z;
-                
+                float angulo = -Vector3 .Cross(direcao, transform.up).z;
+
                 rb.angularVelocity = -angulo * rotacao;
-                rb.velocity = transform.up * velocidade;
+                rb.velocity= transform.up * velocidade;
             }
-        }
-        else
-        {
-            // Destruir o míssil
         }
     }
 }

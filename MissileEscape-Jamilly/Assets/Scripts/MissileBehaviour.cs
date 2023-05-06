@@ -9,18 +9,18 @@ public class MissileBehaviour : MonoBehaviour
     TrailRenderer trail;
 
     [SerializeField]
-    float velocidade,rotacao, tempo;
+    float velocidade, rotacao, tempo;
     void Start()
     {
-     player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-     rb = GetComponent<Rigidbody2D>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        rb = GetComponent<Rigidbody2D>();
 
-     trail = GetComponentInChildren<TrailRenderer>();
+        trail = GetComponentInChildren<TrailRenderer>();
     }
 
     void FixedUpdate()
     {
-        if(tempo > 0)
+        if (tempo > 0)
         {
             if (player != null)
             {
@@ -33,5 +33,30 @@ public class MissileBehaviour : MonoBehaviour
                 rb.velocity = transform.up * velocidade;
             }
         }
+        else
+        {
+            DestroyMissile();
+        }
+
+        tempo -= Time.deltaTime;
+    }
+
+    public void DestroyMissile()
+    {
+
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        trail.enabled = false;
+
+        Destroy(gameObject, 1f);
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Missile"))
+        {
+            DestroyMissile();
+        }
+
     }
 }
+

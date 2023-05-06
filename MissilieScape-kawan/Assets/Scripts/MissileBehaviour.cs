@@ -33,5 +33,28 @@ public class MissileBehaviour : MonoBehaviour
                 rb.velocity= transform.up * velocidade;
             }
         }
+        else
+        {
+            DestroyMissile();
+        }
+
+        tempo-= Time.deltaTime;
     }
+ 
+    public void DestroyMissile()
+    {
+        gameObject.GetComponent<SpriteRenderer>(). enabled = false;
+        trail.enabled = false;
+
+        Destroy (gameObject, 1f);
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+      if (collision.gameObject.CompareTag("Missile"))
+      {
+        DestroyMissile();
+      }
+    }
+    
 }

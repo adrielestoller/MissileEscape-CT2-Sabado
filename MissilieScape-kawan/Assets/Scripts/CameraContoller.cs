@@ -17,7 +17,7 @@ public class CameraContoller : MonoBehaviour
     }
 
     
-    void lateUpdate()
+    void LateUpdate()
     {
        if (player != null) 
        {

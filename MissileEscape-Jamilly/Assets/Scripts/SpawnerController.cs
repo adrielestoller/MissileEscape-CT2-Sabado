@@ -14,7 +14,7 @@ public class SpawnerController : MonoBehaviour
     {
         if (contador < frequencia)
         {
-            contador = Time.deltaTime;
+            contador += Time.deltaTime;
         }
         else
         {
@@ -24,7 +24,7 @@ public class SpawnerController : MonoBehaviour
 
     void spawn()
     {
-Vector2 spawnPos = Camera .main.ViewportToWorldPoint(
+Vector2 spawnPos = Camera.main.ViewportToWorldPoint(
     new Vector2(
         Random.Range(-0.5f, 1.5f),
         Random.Range(-0.5f, 1.5f)

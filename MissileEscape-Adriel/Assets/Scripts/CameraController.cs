@@ -12,7 +12,7 @@ public class CameraController : MonoBehaviour
     {
         if (player != null)
         {
-            moveCamera = transform.position = player.transform.position + moveCamera;
+            moveCamera = transform.position - player.transform.position;
         }
         
     }

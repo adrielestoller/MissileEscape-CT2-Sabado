@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class ShieldBehaviour : ItemController
 {
+    lifecontroller vidaPlayer;
     void Awake()
     {
         Destroy(gameObject, this.tempoVida); 
+        vidaPlayer = GameObject.FindGameObjectWithtag("player").GetConponet<LifeController>();
     }
     public override void Coletar()
     {
         Debug.Log("Escudo coletado");
-        this.Destruir();
+        this.Destruir();    
 
     }
     public void OnTriggerEnter2D(Collider2D collider)

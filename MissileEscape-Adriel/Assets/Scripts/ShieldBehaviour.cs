@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class ShieldBehaviour : ItemController
 {
+    LifeController vidaPlayer;
+
     void Awake()
     {
         Destroy(gameObject, this.tempoVida);
+        vidaPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<LifeController>();
     }
 
     public override void Coletar()
@@ -15,7 +18,7 @@ public class ShieldBehaviour : ItemController
         this.Destruir();
     }
 
-    public void OnTriggerEnter2D(Collider2D collider)    
+    private void OnTriggerEnter2D(Collider2D collider)    
     {
         if (collider.gameObject.CompareTag("Player"))
         {

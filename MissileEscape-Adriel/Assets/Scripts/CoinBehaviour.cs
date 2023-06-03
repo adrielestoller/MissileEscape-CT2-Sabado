@@ -6,11 +6,12 @@ public class CoinBehaviour : ItemController
 {
     [SerializeField]
     int valor;
+
     void Awake() 
     {
         Destroy(gameObject, this.tempoVida);
     }
-    
+
     public override void Coletar()
     {
         Debug.Log("Coletou a moeda!");
@@ -19,9 +20,9 @@ public class CoinBehaviour : ItemController
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-      if (collider.gameObject.CompareTag("Player"))
-    {
-        this.Coletar();
-    }       
+        if (collider.gameObject.CompareTag("Player"))
+        {
+            this.Coletar();
+        }       
     }
 }

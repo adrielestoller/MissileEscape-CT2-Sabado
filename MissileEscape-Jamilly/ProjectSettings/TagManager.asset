@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Missile
+  - Spawner
+  - Coin
+  - Shield
   layers:
   - Default
   - TransparentFX
